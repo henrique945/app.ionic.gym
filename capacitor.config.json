@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "gym",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "app.ionic.gym",
+  "appName": "app",
+  "webDir": "www",
+  "bundledWebRuntime": false
 }
