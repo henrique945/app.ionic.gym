@@ -1,20 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      {{ currentWorkoutName === '' ? 'Meus treinos' : 'Treino ' + currentWorkoutName }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ng-container *ngIf="currentWorkoutName === ''">
+    <div *ngFor="let w of workout" (click)="changeWorkout(w.name)" class="card">
+      Treino {{ w.name }}
+    </div>
+  </ng-container>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ng-container *ngIf="currentWorkoutName !== ''">
+    <div *ngFor="let ex of getWorkoutExercises(currentWorkoutName)" class="exercise">
+      {{ ex.name }}
+      <input type="text" [(ngModel)]="ex.weight">
+    </div>
+  </ng-container>
+
+
+  <div *ngIf="currentWorkoutName === ''" class="btn export">
+    <a [href]="exportData()" target="_blank">Exportar Dados</a>
+  </div>
+  <div class="buttons">
+    <div *ngIf="currentWorkoutName !== ''" class="btn back" (click)="changeWorkout('')">
+      Voltar
+    </div>
+    <div *ngIf="currentWorkoutName !== ''" class="btn save" (click)="updateExercise()">
+      Salvar
+    </div>
   </div>
 </ion-content>
