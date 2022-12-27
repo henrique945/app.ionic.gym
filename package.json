@@ -1,6 +1,6 @@
 {
   "name": "app.ionic.gym",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "henrique.rodrigues7@hotmail.com",
   "scripts": {
     "ng": "ng",
